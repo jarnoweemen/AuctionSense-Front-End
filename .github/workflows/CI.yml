@@ -1,0 +1,24 @@
+name: CI Front-End
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-react-project:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.13.0]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies by using the versions in the .lock file
+        run: yarn --frozen-lockfile
+      - name: run yarn build
+        run: yarn build
