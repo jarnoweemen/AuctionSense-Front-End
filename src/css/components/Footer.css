@@ -1,0 +1,21 @@
+footer {
+    position: absolute;
+    height: 5rem;
+    bottom: 0;
+    width: 100%;
+    background-color: #FF7000;
+    color: white;
+    align-items: center;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  footer p {
+    font-size: 10px;
+  }
+  
+  .footer img {
+    max-width: 30%;
+    max-height: 30%;
+  }
