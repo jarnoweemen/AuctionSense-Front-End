@@ -15,14 +15,27 @@ export default function Navbar() {
 
   return (
     <div className="topnav" id="myTopnav">
-      <a href="#home" className="active">
-        Home
-      </a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <div className="logonav">
+        <a href="#home">
+          <img alt="AuctionSense logo" src="/images/Logo.png"></img>
+        </a>
+      </div>
+      <div className="dropdownleft">
+        <button className="dropbtn">
+          Categories
+          <i className="fa fa-caret-down"></i>
+        </button>
+        <div className="dropdown-content-left">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+      <a href="#populair">Populair</a>
+      <a href="#new">New</a>
       <div className="dropdown">
         <button className="dropbtn">
-          Dropdown
+          Rhoshandiatellyneshiaunneveshenk
           <i className="fa fa-caret-down"></i>
         </button>
         <div className="dropdown-content">
@@ -31,8 +44,11 @@ export default function Navbar() {
           <a href="#">Link 3</a>
         </div>
       </div>
-      <a href="#about">About</a>
-      <a href="javascript:void(0);" className="icon" onClick={MobileFunctionality}>
+      <a
+        href="javascript:void(0);"
+        className="icon"
+        onClick={MobileFunctionality}
+      >
         &#9776;
       </a>
     </div>

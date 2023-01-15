@@ -1,6 +1,6 @@
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: #FF7000;
   overflow: hidden;
 }
 
@@ -13,12 +13,17 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  height: 20px;
 }
 
-/* Add an active class to highlight the current page */
-.active {
-  background-color: #04aa6d;
-  color: white;
+.logonav a {
+  padding: 0;
+}
+
+.logonav img {
+  width: 100px;
+  height: 50px;
+  position: relative;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -28,12 +33,17 @@
 
 /* Dropdown container - needed to position the dropdown content */
 .dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdownleft {
   float: left;
   overflow: hidden;
 }
 
 /* Style the dropdown button to fit inside the topnav */
-.dropdown .dropbtn {
+.dropdown .dropbtn, .dropdownleft .dropbtn {
   font-size: 17px;
   border: none;
   outline: none;
@@ -48,14 +58,24 @@
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0;
   background-color: #f9f9f9;
-  min-width: 160px;
+  width: 250px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 1000;
+}
+
+.dropdown-content-left {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 /* Style the links inside the dropdown */
-.dropdown-content a {
+.dropdown-content a, .dropdown-content-left a {
   float: none;
   color: black;
   padding: 12px 16px;
@@ -66,26 +86,26 @@
 
 /* Add a dark background on topnav links and the dropdown button on hover */
 .topnav a:hover,
-.dropdown:hover .dropbtn {
-  background-color: #555;
+.dropdown:hover .dropbtn, .dropdownleft:hover .dropbtn {
+  background-color: #FF8627;
   color: white;
 }
 
 /* Add a grey background to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
+.dropdown-content a:hover, .dropdown-content-left a:hover {
+  background-color: #ffd5b6;
   color: black;
 }
 
 /* Show the dropdown menu when the user moves the mouse over the dropdown button */
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, .dropdownleft:hover .dropdown-content-left {
   display: block;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child),
-  .dropdown .dropbtn {
+  .dropdown .dropbtn, .dropdownleft .dropbtn {
     display: none;
   }
   .topnav a.icon {
@@ -109,13 +129,13 @@
     display: block;
     text-align: left;
   }
-  .topnav.responsive .dropdown {
+  .topnav.responsive .dropdown, .topnav.responsive .dropdownleft {
     float: none;
   }
-  .topnav.responsive .dropdown-content {
+  .topnav.responsive .dropdown-content, .topnav.responsive .dropdown-content-left {
     position: relative;
   }
-  .topnav.responsive .dropdown .dropbtn {
+  .topnav.responsive .dropdown .dropbtn, .topnav.responsive .dropdownleft .dropbtn {
     display: block;
     width: 100%;
     text-align: left;
