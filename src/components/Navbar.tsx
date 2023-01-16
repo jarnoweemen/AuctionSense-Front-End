@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../css/components/Navbar.css";
 
 export default function Navbar() {
@@ -16,9 +17,9 @@ export default function Navbar() {
   return (
     <div className="topnav" id="myTopnav">
       <div className="logonav">
-        <a href="#home">
+        <Link to="/" >
           <img alt="AuctionSense logo" src="/images/Logo.png"></img>
-        </a>
+        </Link>
       </div>
       <div className="dropdownleft">
         <button className="dropbtn">
@@ -26,31 +27,31 @@ export default function Navbar() {
           <i className="fa fa-caret-down"></i>
         </button>
         <div className="dropdown-content-left">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <Link to="/" >Link 1</Link>
+          <Link to="/" >Link 2</Link>
+          <Link to="/" >Link 3</Link>
         </div>
       </div>
-      <a href="#populair">Populair</a>
-      <a href="#new">New</a>
+      <Link to="/Populair" >Populair</Link>
+      <Link to="/New" >New</Link>
       <div className="dropdown">
         <button className="dropbtn">
           Rhoshandiatellyneshiaunneveshenk
           <i className="fa fa-caret-down"></i>
         </button>
         <div className="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <Link to="/" >Link 1</Link>
+          <Link to="/" >Link 2</Link>
+          <Link to="/" >Link 3</Link>
         </div>
       </div>
-      <a
-        href="javascript:void(0);"
+      <Link
+        to="javascript:void(0);"
         className="icon"
         onClick={MobileFunctionality}
       >
         &#9776;
-      </a>
+      </Link>
     </div>
   );
 }
