@@ -39,7 +39,9 @@ export default function CategoriesDropdown() {
   if (isError) {
     return (
       <div>
-        <div className="dropdown-content-left"></div>
+        <div className="dropdown-content-left">
+            Currently no categories available
+        </div>
       </div>
     );
   }
