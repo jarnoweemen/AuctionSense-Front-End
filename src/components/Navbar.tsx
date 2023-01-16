@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../css/components/Navbar.css";
+import CategoriesDropdown from "./navbar/CategoriesDropdown";
 
 export default function Navbar() {
   const MobileFunctionality = () => {
@@ -26,11 +27,7 @@ export default function Navbar() {
           Categories
           <i className="fa fa-caret-down"></i>
         </button>
-        <div className="dropdown-content-left">
-          <Link to="/" >Link 1</Link>
-          <Link to="/" >Link 2</Link>
-          <Link to="/" >Link 3</Link>
-        </div>
+        <CategoriesDropdown />
       </div>
       <Link to="/Populair" >Populair</Link>
       <Link to="/New" >New</Link>
