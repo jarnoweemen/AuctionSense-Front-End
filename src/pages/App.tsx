@@ -6,6 +6,7 @@ import Home from "./Home";
 import NotFound from "./NotFound";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { SnackbarProvider } from "notistack";
+import Products from "./Products";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="*" element={<Navigate to="/404" replace />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="/" element={<Home />} />
+            <Route path="/c/:category" element={<Products />} />
           </Routes>
           <Footer />
         </SnackbarProvider>
