@@ -29,12 +29,11 @@ export default function DropdownNav() {
   );
 
   const categoryDropdownClick = () => {
-    if (categoryDropdownOpen) {
-      setCategoryDropdownOpen(false);
-    } else {
       setCategoryDropdownOpen(true);
-    }
   };
+  const categoryMouseLeft = () => {
+    setCategoryDropdownOpen(false);
+  }
 
   useEffect(() => {
     if (isError) {
@@ -49,7 +48,7 @@ export default function DropdownNav() {
   if (isError) {
     return (
       <div>
-        <div className="dropdown-content-left">Category service down</div>
+        <div className="dropdown-content-left text-left px-5 py-2">Category service down</div>
       </div>
     );
   }
@@ -57,16 +56,15 @@ export default function DropdownNav() {
   if (isLoading) {
     return (
       <div className="dropdown-content-left">
-        <p>Loading...</p>
+        <p className="px-5 py-2">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" onMouseOver={categoryDropdownClick} onMouseLeave={categoryMouseLeft}>
       <button
-        className="dropdown-btn hover:bg-orange-400 w-full sm:w-auto text-left"
-        onClick={categoryDropdownClick}
+        className="dropdown-btn hover:bg-orange-400 w-full text-left px-5 py-2"
       >
         Categories
       </button>
@@ -77,7 +75,7 @@ export default function DropdownNav() {
         }
       >
         {data?.map((category) => (
-          <Link className="block hover:bg-orange-300 sm:hover:bg-gray-200" key={category.id} to={`/c/${category.name}`}>
+          <Link className="block hover:bg-orange-300 sm:hover:bg-gray-200 px-5 py-2" key={category.id} to={`/c/${category.name}`}>
             {category.name}
           </Link>
         ))}
