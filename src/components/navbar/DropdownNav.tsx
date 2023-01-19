@@ -1,10 +1,13 @@
 import { useSnackbar } from "notistack";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, UseQueryResult } from "react-query";
 import { Link } from "react-router-dom";
 import ICategory from "../../models/ICategory";
 
 export default function DropdownNav() {
+  const [categoryDropdownOpen, setCategoryDropdownOpen] =
+    useState<boolean>(false);
+
   const { enqueueSnackbar } = useSnackbar();
 
   const allCategories = async () => {
@@ -25,8 +28,12 @@ export default function DropdownNav() {
     allCategories
   );
 
-  const toggleDropdown = () => {
-    document.querySelector(".dropdownContent")?.classList.toggle("hidden");
+  const categoryDropdownClick = () => {
+    if (categoryDropdownOpen) {
+      setCategoryDropdownOpen(false);
+    } else {
+      setCategoryDropdownOpen(true);
+    }
   };
 
   useEffect(() => {
@@ -42,9 +49,7 @@ export default function DropdownNav() {
   if (isError) {
     return (
       <div>
-        <div className="dropdown-content-left">
-          Category service down
-        </div>
+        <div className="dropdown-content-left">Category service down</div>
       </div>
     );
   }
@@ -58,34 +63,21 @@ export default function DropdownNav() {
   }
 
   return (
-    <div className="dropdown hover:bg-orange-400 rounded">
+    <div className="dropdown">
       <button
-        className="dropdownbtn w-full p-2 flex items-center"
-        onClick={toggleDropdown}
+        className="dropdown-btn hover:bg-orange-400 w-full sm:w-auto text-left"
+        onClick={categoryDropdownClick}
       >
         Categories
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-5 h-5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
       </button>
-      <div className="dropdownContent hidden absolute z-10 bg-gray-200 text-black w-40">
+      <div
+        className={
+          "dropdown-content sm:absolute text-white bg-orange-400 sm:shadow sm:rounded sm:w-40 sm:bg-white sm:text-black " +
+          (categoryDropdownOpen ? "" : "hidden")
+        }
+      >
         {data?.map((category) => (
-          <Link
-            className="block float-none"
-            key={category.id}
-            to={`/c/${category.name}`}
-          >
+          <Link className="block hover:bg-orange-300 sm:hover:bg-gray-200" key={category.id} to={`/c/${category.name}`}>
             {category.name}
           </Link>
         ))}
