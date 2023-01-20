@@ -11,6 +11,10 @@ jobs:
     strategy:
       matrix:
         node-version: [18.13.0]
+    
+    env:
+      VITE_BASE_URL_API: ${{secrets.VITE_BASE_URL_API}}
+
 
     steps:
       - uses: actions/checkout@v3

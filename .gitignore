@@ -26,3 +26,4 @@ dist-ssr
 # Firebase and jest coverage
 .firebase/*
 coverage/*
+.env

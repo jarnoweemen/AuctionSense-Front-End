@@ -11,7 +11,7 @@ export default function DropdownNav() {
   const { enqueueSnackbar } = useSnackbar();
 
   const allCategories = async () => {
-    const res = await fetch("http://localhost:8080/api/all/categories", {
+    const res = await fetch(import.meta.env.VITE_BASE_URL_API + "/all/categories", {
       method: "GET",
       mode: "cors",
     });
