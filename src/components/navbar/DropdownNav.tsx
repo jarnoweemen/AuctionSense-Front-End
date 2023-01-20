@@ -29,11 +29,11 @@ export default function DropdownNav() {
   );
 
   const categoryDropdownClick = () => {
-      setCategoryDropdownOpen(true);
+    setCategoryDropdownOpen(true);
   };
   const categoryMouseLeft = () => {
     setCategoryDropdownOpen(false);
-  }
+  };
 
   useEffect(() => {
     if (isError) {
@@ -47,25 +47,12 @@ export default function DropdownNav() {
 
   if (isError) {
     return (
-      <div>
-        <div className="dropdown-content-left text-left px-5 py-2">Category service down</div>
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div className="dropdown-content-left">
-        <p className="px-5 py-2">Loading...</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="dropdown" onMouseOver={categoryDropdownClick} onMouseLeave={categoryMouseLeft}>
-      <button
-        className="dropdown-btn hover:bg-orange-400 w-full text-left px-5 py-2"
-      >
+      <div
+      className="dropdown"
+      onMouseOver={categoryDropdownClick}
+      onMouseLeave={categoryMouseLeft}
+    >
+      <button className="dropdown-btn hover:bg-orange-400 w-full text-left px-5 py-2">
         Categories
       </button>
       <div
@@ -73,9 +60,59 @@ export default function DropdownNav() {
           "dropdown-content sm:absolute text-white bg-orange-400 sm:shadow sm:rounded sm:w-40 sm:bg-white sm:text-black " +
           (categoryDropdownOpen ? "" : "hidden")
         }
+        data-testid="dropdown-content"
+      >
+        Category service down
+      </div>
+    </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div
+        className="dropdown"
+        onMouseOver={categoryDropdownClick}
+        onMouseLeave={categoryMouseLeft}
+      >
+        <button className="dropdown-btn hover:bg-orange-400 w-full text-left px-5 py-2">
+          Categories
+        </button>
+        <div
+          className={
+            "dropdown-content sm:absolute text-white bg-orange-400 sm:shadow sm:rounded sm:w-40 sm:bg-white sm:text-black " +
+            (categoryDropdownOpen ? "" : "hidden")
+          }
+          data-testid="dropdown-content"
+        >
+          Loading...
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="dropdown"
+      onMouseOver={categoryDropdownClick}
+      onMouseLeave={categoryMouseLeft}
+    >
+      <button className="dropdown-btn hover:bg-orange-400 w-full text-left px-5 py-2">
+        Categories
+      </button>
+      <div
+        className={
+          "dropdown-content sm:absolute text-white bg-orange-400 sm:shadow sm:rounded sm:w-40 sm:bg-white sm:text-black " +
+          (categoryDropdownOpen ? "" : "hidden")
+        }
+        data-testid="dropdown-content"
       >
         {data?.map((category) => (
-          <Link className="block hover:bg-orange-300 sm:hover:bg-gray-200 px-5 py-2" key={category.id} to={`/c/${category.name}`}>
+          <Link
+            className="block hover:bg-orange-300 sm:hover:bg-gray-200 px-5 py-2"
+            key={category.id}
+            to={`/c/${category.name}`}
+          >
             {category.name}
           </Link>
         ))}
