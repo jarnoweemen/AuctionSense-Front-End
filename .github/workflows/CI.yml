@@ -22,7 +22,7 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies by using the versions in the .lock file
         run: yarn --frozen-lockfile
-            - name: run tests and jest coverage
+      - name: run tests and jest coverage
         run: yarn test
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
